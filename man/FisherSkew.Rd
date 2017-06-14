@@ -1,44 +1,35 @@
-\name{Third}
-\alias{Third}
+\name{FisherSkew}
+\alias{FisherSkew}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Third multivariate moment of a data matrix
+\title{Fisher's  measure of skewness
 %%  ~~function to do ... ~~
 }
-\description{It contains all moments of order three which can be obtained from the variables.
+\description{Computes Fisher's  measure of skewness, that is 
+the third standardized moment of each variable in the dataset
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-Third(data, type)
+FisherSkew(data)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{data matrix
 %%     ~~Describe \code{data} here~~
 }
-  \item{type}{type="raw" is the third raw moment
-  
-  type="central" is the third central moment
-  
-  type="standardized" is the third standardized moment
-%%     ~~Describe \code{type} here~~
 }
-}
-\details{Some general information about the third multivariate moment of both theoretical
-and emprical distributions are reviewed in Loperfido, N. (2015).
+%\details{
 %%  ~~ If necessary, more details than the description above ~~
-}
-\value{Third moment:
-all moments of order three which can be obtained from the variables in "data".
+%}
+\value{Dataframe containing Fisher's  measure of skewness of each variable of the dataset
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
 %%  \item{comp2 }{Description of 'comp2'}
 %% ...
 }
-\references{Loperfido, N. (2015). Singular Value Decomposition of the Third Multivariate Moment.
-Linear Algebra and its Applications 473, 202-216.
+%\references{
 %% ~put references to the literature/web site here ~
-}
+%}
 \author{Cinzia Franceschini and Nicola Loperfido
 %%  ~~who you are~~
 }
@@ -54,6 +45,5 @@ Linear Algebra and its Applications 473, 202-216.
 \examples{
 data(PM10_2006)
 PM10_2006_matrix<-data.matrix(PM10_2006)
-Third(PM10_2006_matrix[,2:5], "raw")
+FisherSkew(PM10_2006_matrix)
 }
-

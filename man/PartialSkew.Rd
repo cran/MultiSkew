@@ -22,18 +22,14 @@ PartialSkew(data)
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-\item{Vector }{The vector-valued skewness introduced by  Mori et al (1993)
-}
-\item{Scalar }{The squared norm of Vector}
+\item{Vector }{The vector-valued skewness introduced by  Mori et al (1993)}
+  \item{Scalar }{The squared norm of Vector}
+  \item{pvalue }{The probability of observing a value of Scalar greater than the observed one,
+when data are normally distributed}
 %% ...
-
-\item{pvalue }{The probability of observing a value of Scalar greater than the observed one,
-when data are normally distributed
-}
 }
 \references{Mori T.F., Rohatgi V.K. and Szekely G.J. (1993).
 On multivariate skewness and kurtosis. Theory Probab. Appl. 38, 547-551.
-
 %% ~put references to the literature/web site here ~
 }
 \author{Cinzia Franceschini and Nicola Loperfido
@@ -53,6 +49,3 @@ On multivariate skewness and kurtosis. Theory Probab. Appl. 38, 547-551.
 ##PM10_2006_matrix<-data.matrix(PM10_2006)
 ##PartialSkew(PM10_2006_matrix[,2:5])
 }
-
-
-

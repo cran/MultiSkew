@@ -1,7 +1,11 @@
 SkewBoot <-
 function(data,replicates,units,type){
   MaxSkew<-NULL
-#library("MaxSkew.R")
+  Scalar<-NULL
+  MardiaSkewness<-NULL
+ rm("MardiaSkewness")
+ 
+  
 
 #Bootstrap distribution of the chosen measure of skewness.
 #The function calls the package MaxSkew 1.1, which needs to be downloaded.
@@ -10,7 +14,7 @@ function(data,replicates,units,type){
 
 ##OUTPUT
 #histogram of the above mentioned bootstrap distribution
-#Pvalue= p-value of the chosen skewness measure 
+#Pvalue= p-value of the chosen skewness measure
 #Vector= vector containing the bootstrap replicates of the chosen skewness measure
 
 ##INPUT
@@ -20,19 +24,18 @@ function(data,replicates,units,type){
 #if type="Directional" or "Mardia", units is an integer > the number of variables
 #If type="Partial" it is an integer > the number of variables + 1
 #type="Directional", "Partial" or "Mardia"
-Scalar<-c()
-MardiaSkewness<-c()
+
 fine<-replicates+1
 
 if(type!="Directional"&&type!="Partial"&&type!="Mardia"){
 print("ERROR: type must be either Directional, Partial or Mardia")
 }
 else{
-.xxx<-matrix(c(0),ncol=1,nrow=fine)#initializes the vector "matrix"
+xxx<-matrix(c(0),ncol=1,nrow=fine)#initializes the vector "matrix"
 
 uno<-matrix(c(1),nrow=units,ncol=1)#initializes the vector "uno"
 AA<-matrix(ncol=1, nrow=fine)# initializes the bootstrapped skewnesses
-source(".FisherSkew.R")
+source("FisherSkew.R")
 
 Y<-matrix(nrow=fine,ncol=1)#initializes the vector "Y"
 
@@ -40,26 +43,28 @@ for (b in 1:fine){
 
 xB<-matrix(sample(data,size=ncol(data)*units,replace=TRUE),nrow=units)#sampled matrices
 if (type=="Directional"){
-  source("MaxSkew")
 proj<-MaxSkew(xB,5,2,FALSE)##applies MaxSkew to xB
-.xxx[b,1]<-.FisherSkew(proj)[2,1]#computes Fisher skewness
+xxx[b,1]<-FisherSkew(proj)[2,1]#computes Fisher skewness
 
 }
 
 if(type=="Partial"){#applies PartialSkew to xB
-PartialSkew(xB)
-.xxx[b,1]<-Scalar
+Scalar<-PartialSkew(xB)
+xxx[b,1]<-Scalar
 }
 
 if(type=="Mardia"){#applies SkewMardia to xB
-SkewMardia(xB)
-.xxx[b,1]<-MardiaSkewness
+ ###source("SkewMardia.R")
+  SkewMardia(xB)
+  Mardiaprova<-MardiaSkewness
+  xxx[b,1]<-Mardiaprova
+  #####xxx[b,1]<-MardiaSkewness
 }
 
 
-xxx.mean<-mean(.xxx) #mean vector (value)
-m<-.xxx-xxx.mean #centered data
-xxx.sd<-sd(.xxx)#standard deviation of the data xxx
+xxx.mean<-mean(xxx) #mean vector (value)
+m<-xxx-xxx.mean #centered data
+xxx.sd<-sd(xxx)#standard deviation of the data xxx
 Y[,1]<-m/xxx.sd
 z<-Y[,1]#the standardized variable
 
@@ -86,7 +91,7 @@ print(AA[2:fine,1])
 ##in order to compute the p-value of bootstrap
 count<-0
 for(i in 1:fine){
-if(AA[i,1]>= .FisherSkew(data)[2,1])
+if(AA[i,1]>= FisherSkew(data)[2,1])
 
 count<-count+1
 }

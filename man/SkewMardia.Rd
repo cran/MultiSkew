@@ -4,9 +4,8 @@
 \title{Multivariate skewness as defined in Mardia (1970)
 %%  ~~function to do ... ~~
 }
-\description{It is the sum of squared elements in the third standardized cumulant
+\description{Sum of squared elements in the third standardized cumulant
 of the data matrix.
-
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -24,16 +23,15 @@ SkewMardia(data)
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-\item{MardiaSkewness}{It is the squared norm of the third cumulant of the standardized data
+\item{MardiaSkewness}{Squared norm of the third cumulant of the standardized data
 }
-\item{pvalue }{It is the probability of observing a value of MardiaSkewness greater than 
+\item{pvalue }{Probability of observing a value of MardiaSkewness greater than 
 the observed one, when data are normally distributed.
 }
 %% ...
 }
 \references{Mardia, K.V. (1970),
 Measures of multivariate skewness and kurtosis with applications.Biometrika 57, 519-530.
-
 %% ~put references to the literature/web site here ~
 }
 \author{Cinzia Franceschini and Nicola Loperfido

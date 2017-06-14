@@ -1,7 +1,7 @@
 Third <-
 function(data,type){
 #Third multivariate moment of the data matrix
-#containing all moments of order three which can be obtained from the variables in the data matrix.
+#containing all moments of order three which can be obtained from the variables
 #Some general information about the third multivariate moment of both theoretical
 #and emprical distributions are reviewed in the paper
 #Loperfido, N. (2015). Singular Value Decomposition of the Third Multivariate Moment.
@@ -15,9 +15,10 @@ function(data,type){
 
 n<-nrow(data) #number of units
 d<-ncol(data) #number of variables
-.ThirdMoment<-matrix()
 
 A<-matrix(c(0),nrow=d*d,ncol=d)#initializes the sum of tensor products
+
+ThirdMoment<<-matrix()
 
 if(type!="raw"&&type!="central"&&type!="standardized"){
 print("ERROR: type must be either raw,central or standardized")
@@ -59,10 +60,10 @@ for(i in 1:n){
 A<-A+kronecker(kronecker(Y[i,],t(Y[i,])),Y[i,]) #updates the sum of tensor products
 }
 M<-A/n # third moment
-.ThirdMoment<<-round(M,digits=4)
+ThirdMoment<-round(M,digits=4)
 
 print("Third moment")
-print(.ThirdMoment)
+print(ThirdMoment)
 
 }
 }

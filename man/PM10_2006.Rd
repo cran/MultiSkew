@@ -21,7 +21,7 @@
 %\details{
 %%  ~~ If necessary, more details than the __description__ above ~~
 %}
-\source{APAT (2007) Environmental data yearbook http:www.apat.gov.it site it-IT APAT Pubblicazioni Annuario_dei_Dati_Ambientali 
+\source{APAT (2007) Environmental data yearbook http:www.apat.gov.it site it-IT APAT Pubblicazioni Annuario_dei_Dati_Ambientali
 %%  ~~ reference to a publication or URL from which the data were obtained ~~
 }
 \references{Bartoletti, S. and Loperfido, N. (2010). Modelling Air Pollution Data by the Skew-Normal Distribution. Stochastic Environmental Research & Risk Assessment 24, 513-517.

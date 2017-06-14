@@ -7,7 +7,7 @@ function(data){
 #pvalue is the probability of observing a value of Scalar greater than the observed one,
 #when data are normally distributed.
 #The measure has been introduced in the paper
-#Mori T.F., Rohatgi V.K. and Szekely G.J. (1993).
+#MOri T.F., Rohatgi V.K. and SzEkely G.J. (1993).
 #On multivariate skewness and kurtosis. Theory Probab. Appl. 38, 547-551.
 
 #PRELIMINARIES
@@ -54,7 +54,7 @@ V<-c(V,(I[,i]))
 }
 
 Vector<-t(T)%*%V
-Scalar<<-t(Vector)%*%Vector
+Scalar<-t(Vector)%*%Vector
 prova<-pchisq(0.5*n*Scalar/(d+2),df=d)
 pvalue<-1-prova
 Vector<<-round(Vector,digits=4)

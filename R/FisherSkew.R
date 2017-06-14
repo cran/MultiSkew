@@ -1,4 +1,4 @@
-.FisherSkew <-
+FisherSkew <-
 function(data){
 #Computes Fisher' s  measure of skewness,that is 
 #the third standardized moment of each variable in the dataset.
@@ -8,6 +8,7 @@ function(data){
 n<-nrow(data) #number of units
 d<-ncol(data) #number of variables
 Y<-matrix(nrow=n,ncol=d)#initializes the matrix of standardized variables
+tab<-data.frame()
 
 x.mean<-colMeans(data) #mean vector
 m<-sweep(data,2,x.mean)#centered data
@@ -30,7 +31,9 @@ for(j in 1:d){
  
 	}
 			
-.AB<-A
+#AB<<-A
+tab<<-data.frame(A[1:2,],row.names=c("Variables","Fisher Skewness"))#final table as a dataframe
 
-return(data.frame(A[1:2,],row.names=c("Variables","Fisher Skewness")))#final table as a dataframe
+return(tab)
+
 }

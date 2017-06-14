@@ -14,6 +14,7 @@ function(data,dimension){
 n<-nrow(data) #number of units
 d<-ncol(data) #number of variables
 A<-matrix(c(0),nrow=d*d,ncol=d)#initializes the sum of tensor products
+
 Projections<-matrix()
 Linear<-matrix()
 values<-as.list(seq(1:(d-1)))
@@ -58,12 +59,11 @@ QQ<-Z%*%A
 QQQ<-cbind(-QQ[,1],QQ[,2:dimension])
 QQQ<-round(QQQ,digits=4)
 
-
 Projections<<-QQQ
-Projections<<-round(Projections,digits=4)
+#Projections<<-round(Projections,digits=4)
 Linear<<-A
-print("Linear")
-print(Linear)
-print("Projections")
-print(Projections)
+#print("Linear")
+#print(Linear)
+#print("Projections")
+#print(Projections)
 }

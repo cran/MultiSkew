@@ -13,13 +13,15 @@ function(data){
 #Measures of multivariate skewness and kurtosis with applications.Biometrika 57, 519-530.
 
 #PRELIMINARIES
-  
-MardiaSkewness<-c()
-pvalue<-c()
 
 n<-nrow(data) #number of units
 d<-ncol(data) #number of variables
 A<-matrix(c(0),nrow=d*d,ncol=d)#initializes the sum of tensor products
+
+pvalue<-NULL
+rm("pvalue")
+MardiaSkewness<-NULL
+rm("MardiaSkewness")
 
 concentrationmatrix<-solve(cov(data)*(n-1)/n)#inverse of the covariance matrix
 aut<-eigen(concentrationmatrix)#spectrum of concentrationmatrix
@@ -55,4 +57,6 @@ MardiaSkewness<<-sum(diag(P))#Mardia
 
 chiMardia<-pchisq((MardiaSkewness*n)/6,df=(d*(d+1)*(d+2))/6)
 pvalue<<-1-chiMardia
+
+
 }

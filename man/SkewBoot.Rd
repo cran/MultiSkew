@@ -5,7 +5,6 @@
 %%  ~~function to do ... ~~
 }
 \description{Computes the bootstrap distribution, its histogram and the corresponding p-value of the chosen measure of multivariate skewness (Mardia, Partial or Directional), using a given number of bootstrap replicates.
-
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
@@ -20,12 +19,10 @@ SkewBoot(data, replicates, units, type)
 %%     ~~Describe \code{replicates} here~~
 }
   \item{units}{number of rows in the data matrices sampled from the original data matrix
-
 %%     ~~Describe \code{units} here~~
 }
   \item{type}{"Directional", "Partial" or "Mardia". If type is set equal to
 "Directional" or "Mardia", units is an integer greater than the number of variables. If type set equal to "Partial", units  is an integer greater than the number of variables + 1
-
 %%     ~~Describe \code{type} here~~
 }
 }
@@ -36,9 +33,9 @@ The number of iterations required by the package MaxSkew is set equal to 5.
 \value{
 %%  ~Describe the value returned
 %%  If it is a LIST, use
-\item{histogram}{plot of the above mentioned bootstrap distribution}
-\item{Pvalue }{p-value of the chosen skewness measure }
-\item{Vector }{vector containing the bootstrap replicates of the chosen skewness measure  }
+\item{histogram }{plot of the above mentioned bootstrap distribution}
+ \item{Pvalue}{p-value of the chosen skewness measure}
+ \item{Vector }{vector containing the bootstrap replicates of the chosen skewness measure }
 %% ...
 }
 %\references{

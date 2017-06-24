@@ -14,7 +14,7 @@ Type: Package
 
 Title: Measures, Tests and Removes Multivariate Skewness
 
-Version: 1.1
+Version: 1.1.1
 
 Date: 2017-06-13
 
@@ -59,17 +59,18 @@ Mori T.F., Rohatgi V.K. and Szekely G.J. (1993). On multivariate skewness and ku
 %~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 %}
 \examples{
-##data(PM10_2006)
-##PM10_2006_matrix<-data.matrix(PM10_2006)
+data(PM10_2006)
+PM10_2006_matrix<-data.matrix(PM10_2006)
 
-##MinSkew(PM10_2006_matrix[,2:5],4)
+MinSkew(PM10_2006_matrix[,2:5],4)
+PartialSkew(PM10_2006_matrix[,2:5])
+SkewMardia(PM10_2006_matrix[,2:5])
+Third(PM10_2006_matrix[,2:5], "raw")
 
-##PartialSkew(PM10_2006_matrix[,2:5])
+#library(MaxSkew)
 
-##library(MaxSkew)
-##SkewBoot(PM10_2006_matrix[,2:5], 50, 50, "Directional")
+SkewBoot(PM10_2006_matrix[,2:5], 50, 50, "Directional")
+SkewBoot(PM10_2006_matrix[,2:5], 50, 50, "Mardia")
+SkewBoot(PM10_2006_matrix[,2:5], 50, 50, "Partial")
 
-##SkewMardia(PM10_2006_matrix[,2:5])
-
-##Third(PM10_2006_matrix[,2:5], "raw")
 }

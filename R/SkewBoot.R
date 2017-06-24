@@ -1,5 +1,7 @@
 SkewBoot <-
 function(data,replicates,units,type){
+  #source("MaxSkew.R")
+  
   MaxSkew<-NULL
   Scalar<-NULL
   MardiaSkewness<-NULL
@@ -35,7 +37,11 @@ xxx<-matrix(c(0),ncol=1,nrow=fine)#initializes the vector "matrix"
 
 uno<-matrix(c(1),nrow=units,ncol=1)#initializes the vector "uno"
 AA<-matrix(ncol=1, nrow=fine)# initializes the bootstrapped skewnesses
-source("FisherSkew.R")
+#source('C:/Cinzia/Package/Noemi_da modificare/MultiSkew/MultiSkew/R/FisherSkew.R')
+#source('C:/Cinzia/Package/Noemi_da modificare/MultiSkew/MultiSkew/R/PartialSkew.R')
+#source('C:/Cinzia/Package/Noemi_da modificare/MultiSkew/MultiSkew/R/SkewMardia.R')
+
+
 
 Y<-matrix(nrow=fine,ncol=1)#initializes the vector "Y"
 
@@ -54,11 +60,11 @@ xxx[b,1]<-Scalar
 }
 
 if(type=="Mardia"){#applies SkewMardia to xB
- ###source("SkewMardia.R")
+
   SkewMardia(xB)
   Mardiaprova<-MardiaSkewness
   xxx[b,1]<-Mardiaprova
-  #####xxx[b,1]<-MardiaSkewness
+
 }
 
 
@@ -76,13 +82,13 @@ AA[b,1]<-round(mean(z^3),digits=4)#third standardized cumulant of the sample
 
 
 if(type=="Directional"){
-hist(AA[2:fine,1],freq=F,main="Histogram of bootstrapped Directional skewness",xlab="Skewness")
+hist(AA[2:fine,1],freq=FALSE,main="Histogram of bootstrapped Directional skewness",xlab="Skewness")
 }
 if(type=="Partial"){
-hist(AA[2:fine,1],freq=F,main="Histogram of bootstrapped Partial skewness",xlab="Skewness")
+hist(AA[2:fine,1],freq=FALSE,main="Histogram of bootstrapped Partial skewness",xlab="Skewness")
 }
 if(type=="Mardia"){
-hist(AA[2:fine,1],freq=F,main="Histogram of bootstrapped Mardia skewness",xlab="Skewness")
+hist(AA[2:fine,1],freq=FALSE,main="Histogram of bootstrapped Mardia skewness",xlab="Skewness")
 }
 
 print("Vector")
@@ -90,13 +96,13 @@ print(AA[2:fine,1])
 
 ##in order to compute the p-value of bootstrap
 count<-0
-for(i in 1:fine){
+for(i in 2:fine){
 if(AA[i,1]>= FisherSkew(data)[2,1])
-
 count<-count+1
 }
 pvalue.Skew<-(count+1)/fine
 print("Pvalue")
 print(pvalue.Skew)
 }
+
 }

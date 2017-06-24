@@ -34,6 +34,6 @@ for(j in 1:d){
 #AB<<-A
 tab<<-data.frame(A[1:2,],row.names=c("Variables","Fisher Skewness"))#final table as a dataframe
 
-return(tab)
-
+#return(tab)
+#print(tab)
 }

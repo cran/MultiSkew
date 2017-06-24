@@ -17,8 +17,9 @@ n<-nrow(data) #number of units
 d<-ncol(data) #number of variables
 
 A<-matrix(c(0),nrow=d*d,ncol=d)#initializes the sum of tensor products
-
-ThirdMoment<<-matrix()
+ThirdMoment<-NULL
+rm("ThirdMoment")
+##ThirdMoment<<-matrix()
 
 if(type!="raw"&&type!="central"&&type!="standardized"){
 print("ERROR: type must be either raw,central or standardized")
@@ -60,7 +61,7 @@ for(i in 1:n){
 A<-A+kronecker(kronecker(Y[i,],t(Y[i,])),Y[i,]) #updates the sum of tensor products
 }
 M<-A/n # third moment
-ThirdMoment<-round(M,digits=4)
+ThirdMoment<<-round(M,digits=4)
 
 print("Third moment")
 print(ThirdMoment)
